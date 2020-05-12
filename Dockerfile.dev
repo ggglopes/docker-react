@@ -1,0 +1,13 @@
+# PS: Depois de dar um "npm run build", pode apagar o diretorio "node_modules""
+# para evitar duplicar as dependencias, uma vez que a imagem base ja tem o node instalado
+
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "start"]
